@@ -39,6 +39,7 @@ Local testing before publishing:
 | `nvim.utility` | development | misc vim.* helpers |
 | `nvim.snippet` | development | vim.snippet expand/jump/active/stop |
 | `nvim.system` | development | vim.system process runner |
+| `luasnip` | development | LuaSnip engine: node constructors, snippet opts, events/callbacks, add_snippets, extras |
 | `prime-planning` | productivity | test-first planning |
 | `regression-testing` | development | regression test protocol |
 
