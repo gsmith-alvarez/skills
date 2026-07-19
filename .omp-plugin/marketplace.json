@@ -4,7 +4,7 @@
     "name": "Your Name"
   },
   "metadata": {
-    "description": "Neovim Lua API reference skills and test-planning workflow skills for oh-my-pi.",
+    "description": "Neovim Lua API reference skills, test-planning workflow skills, and Anki card-generation skills (notes, templates, cloze, math, media, import/export) for oh-my-pi.",
     "version": "1.0.0",
     "pluginRoot": "plugins"
   },
@@ -15,7 +15,11 @@
       "source": "./nvim",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "lua", "api"]
+      "tags": [
+        "neovim",
+        "lua",
+        "api"
+      ]
     },
     {
       "name": "nvim.diagnostics",
@@ -23,7 +27,11 @@
       "source": "./nvim.diagnostics",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "diagnostics", "lua"]
+      "tags": [
+        "neovim",
+        "diagnostics",
+        "lua"
+      ]
     },
     {
       "name": "nvim.lsp",
@@ -31,7 +39,11 @@
       "source": "./nvim.lsp",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "lsp", "lua"]
+      "tags": [
+        "neovim",
+        "lsp",
+        "lua"
+      ]
     },
     {
       "name": "nvim.treesitter",
@@ -39,7 +51,11 @@
       "source": "./nvim.treesitter",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "treesitter", "lua"]
+      "tags": [
+        "neovim",
+        "treesitter",
+        "lua"
+      ]
     },
     {
       "name": "nvim.loop",
@@ -47,7 +63,12 @@
       "source": "./nvim.loop",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "libuv", "async", "lua"]
+      "tags": [
+        "neovim",
+        "libuv",
+        "async",
+        "lua"
+      ]
     },
     {
       "name": "nvim.keymap",
@@ -55,7 +76,11 @@
       "source": "./nvim.keymap",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "keymap", "lua"]
+      "tags": [
+        "neovim",
+        "keymap",
+        "lua"
+      ]
     },
     {
       "name": "nvim.fs",
@@ -63,7 +88,11 @@
       "source": "./nvim.fs",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "filesystem", "lua"]
+      "tags": [
+        "neovim",
+        "filesystem",
+        "lua"
+      ]
     },
     {
       "name": "nvim.utility",
@@ -71,7 +100,11 @@
       "source": "./nvim.utility",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "utility", "lua"]
+      "tags": [
+        "neovim",
+        "utility",
+        "lua"
+      ]
     },
     {
       "name": "nvim.snippet",
@@ -79,7 +112,11 @@
       "source": "./nvim.snippet",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "snippet", "lua"]
+      "tags": [
+        "neovim",
+        "snippet",
+        "lua"
+      ]
     },
     {
       "name": "nvim.system",
@@ -87,7 +124,11 @@
       "source": "./nvim.system",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["neovim", "process", "lua"]
+      "tags": [
+        "neovim",
+        "process",
+        "lua"
+      ]
     },
     {
       "name": "prime-planning",
@@ -95,7 +136,11 @@
       "source": "./prime-planning",
       "version": "1.0.0",
       "category": "productivity",
-      "tags": ["planning", "testing", "workflow"]
+      "tags": [
+        "planning",
+        "testing",
+        "workflow"
+      ]
     },
     {
       "name": "regression-testing",
@@ -103,7 +148,11 @@
       "source": "./regression-testing",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["testing", "regression", "workflow"]
+      "tags": [
+        "testing",
+        "regression",
+        "workflow"
+      ]
     },
     {
       "name": "luasnip",
@@ -111,7 +160,95 @@
       "source": "./luasnip",
       "version": "1.0.0",
       "category": "development",
-      "tags": ["luasnip", "snippet", "neovim", "lua"]
+      "tags": [
+        "luasnip",
+        "snippet",
+        "neovim",
+        "lua"
+      ]
+    },
+    {
+      "name": "anki.note-types",
+      "description": "Anki's data model — notes vs cards, fields, note types, and the built-in types (Basic, Basic (and reversed), Basic (optional reversed), Basic (type in the answer), Cloze, Image Occlusion). Covers card-generation rules, deck override, and tags. Use when designing note types or deciding how cards are generated from notes.",
+      "source": "./anki.note-types",
+      "version": "1.0.0",
+      "category": "education",
+      "tags": [
+        "anki",
+        "notes",
+        "flashcards",
+        "study"
+      ]
+    },
+    {
+      "name": "anki.card-templates",
+      "description": "Anki card template language — field replacement {{Field}}, conditionals {{#Field}}/{{^Field}}, special fields ({{Tags}}, {{FrontSide}}, {{Type}}, {{Deck}}, {{Subdeck}}, {{CardFlag}}, {{Card}}), filters (type:, cloze:, text:, hint:, tts:, furigana:/kana:/kanji:, cloze-only:), the {{FrontSide}} + <hr id=answer> divider, raw HTML/CSS, and card-generation rules. Use when writing or editing Anki card front/back templates or styling.",
+      "source": "./anki.card-templates",
+      "version": "1.0.0",
+      "category": "education",
+      "tags": [
+        "anki",
+        "templates",
+        "html",
+        "css",
+        "flashcards"
+      ]
+    },
+    {
+      "name": "anki.cloze",
+      "description": "Cloze deletion syntax and generation — {{c1::text}}, {{c1::text::hint}}, multiple clozes → multiple cards, numbering rules, nested clozes, the cloze note type (single card template using {{cloze:Text}}), per-card conditionals {{#c1}}, type:cloze, cloze+LaTeX delimiter conflicts, and Image Occlusion. Use when generating cloze cards.",
+      "source": "./anki.cloze",
+      "version": "1.0.0",
+      "category": "education",
+      "tags": [
+        "anki",
+        "cloze",
+        "flashcards",
+        "study"
+      ]
+    },
+    {
+      "name": "anki.math",
+      "description": "MathJax (\\(…\\), \\[…\\]) and LaTeX ([latex]…[/latex], [$]…[/$], [$$]…[/$$]) in Anki cards, mhchem chemistry, and the known conflicts between cloze/LaTeX delimiters and template field replacements. Use when adding equations or chemical notation to Anki cards.",
+      "source": "./anki.math",
+      "version": "1.0.0",
+      "category": "education",
+      "tags": [
+        "anki",
+        "math",
+        "latex",
+        "mathjax",
+        "flashcards"
+      ]
+    },
+    {
+      "name": "anki.media",
+      "description": "Media on Anki cards — [sound:file.mp3], <img src=\"file.jpg\">, static template media (leading-underscore naming), the collection.media folder, supported formats (MP3/MP4), importing media via text files, LaTeX-rendered images, and TTS. Use when adding audio, images, video, or generated media to cards.",
+      "source": "./anki.media",
+      "version": "1.0.0",
+      "category": "education",
+      "tags": [
+        "anki",
+        "media",
+        "audio",
+        "images",
+        "flashcards"
+      ]
+    },
+    {
+      "name": "anki.import-export",
+      "description": "Bulk-creating Anki notes/cards from text files (CSV/TSV) and packaged decks (.apkg/.colpkg) — field separators, quoting/escaping, HTML newlines, file headers (#separator, #html, #tags, #columns, #notetype, #deck, #notetype column, #deck column, #tags column, #guid column), duplicate/GUID handling, and export options. Use when generating cards in bulk or sharing decks.",
+      "source": "./anki.import-export",
+      "version": "1.0.0",
+      "category": "education",
+      "tags": [
+        "anki",
+        "import",
+        "export",
+        "csv",
+        "apkg",
+        "flashcards"
+      ]
     }
   ]
 }

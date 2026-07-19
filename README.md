@@ -1,6 +1,6 @@
 # omp-neovim-skills
 
-Neovim Lua API reference skills and test-planning workflow skills, packaged as an [oh-my-pi](https://github.com/) marketplace. Each skill installs independently and is discoverable via `skill://<name>`.
+Neovim Lua API reference skills, test-planning workflow skills, and Anki card-generation skills, packaged as an [oh-my-pi](https://github.com/) marketplace. Each skill installs independently and is discoverable via `skill://<name>`.
 
 ## Install
 
@@ -9,6 +9,7 @@ Add the marketplace, then install plugins:
 ```
 /marketplace add <your-github-username>/omp-neovim-skills
 /marketplace install nvim@omp-neovim-skills
+/marketplace install anki.cloze@omp-neovim-skills
 /marketplace install nvim.system@omp-neovim-skills
 ```
 
@@ -40,6 +41,12 @@ Local testing before publishing:
 | `nvim.snippet` | development | vim.snippet expand/jump/active/stop |
 | `nvim.system` | development | vim.system process runner |
 | `luasnip` | development | LuaSnip engine: node constructors, snippet opts, events/callbacks, add_snippets, extras |
+| `anki.note-types` | education | notes vs cards, fields, note types, built-in types, card-generation rules |
+| `anki.card-templates` | education | template language: field replacement, conditionals, filters, special fields, HTML/CSS |
+| `anki.cloze` | education | cloze deletion syntax, generation, nested clozes, per-card conditionals, Image Occlusion |
+| `anki.math` | education | MathJax and LaTeX in cards, mhchem, cloze/LaTeX delimiter conflicts |
+| `anki.media` | education | sound/image/video tags, static template media, collection.media, formats, import |
+| `anki.import-export` | education | CSV/TSV import, file headers, duplicates/GUID, .apkg/.colpkg packaged decks |
 | `prime-planning` | productivity | test-first planning |
 | `regression-testing` | development | regression test protocol |
 
