@@ -1,3 +1,7 @@
+---
+name: Neovim Lua API Reference
+description: Reference for Neovim's Lua API surface (vim.api, vim.fn, and builtin helpers such as vim.schedule, vim.wait, vim.ui_*). Use when writing or editing Neovim Lua plugins/configs, or when an agent needs exact vim.api/vim.fn signatures.
+---
 # Neovim Lua API Reference
 
 This document contains type stubs and API references for Neovim's Lua API.
@@ -214,38 +218,6 @@ function vim.wait(time, callback, interval, fast_only) end
 function vim.ui_attach(ns, options, callback) end
 function vim.ui_detach(ns) end
 ```
-
----
-
-## api_keysets
-
-The following describe various types that are used in Neovim's API.
-
-```lua
-
-```
-
----
-
-## api_keysets_extra
-
-Additional types that are used in Neovim's API.
-
-```lua
-
-```
-
----
-
-## builtin_types
-
-Various types used by Neovim's builtin APIs.
-
-```lua
-
-```
-
----
 
 ## vimfn
 

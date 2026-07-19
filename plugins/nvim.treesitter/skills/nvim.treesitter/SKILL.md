@@ -1,3 +1,7 @@
+---
+name: Neovim Treesitter API
+description: Reference for Neovim treesitter Lua APIs (TSNode, TSTree, TSQuery, TSParser, query cursors). Use when writing tree-sitter queries, node traversal, or syntax-aware edits.
+---
 # Neovim Treesitter API Reference
 
 This document contains type stubs and API references for Neovim's treesitter Lua API.
@@ -53,7 +57,6 @@ TSTree methods - represents the parsed contents of a buffer.
 function TSTree:root() end
 function TSTree:edit(start_byte, end_byte_old, end_byte_new, start_row, start_col, end_row_old, end_col_old, end_row_new, end_col_new) end
 function TSTree:copy() end
-function TSTree:included_ranges(include_bytes) end
 function TSTree:included_ranges(include_bytes) end
 ```
 

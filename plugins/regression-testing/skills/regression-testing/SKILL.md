@@ -7,7 +7,7 @@ description: Ensures that every codebase modification is backed by a correspondi
 
 This skill defines the mandatory testing standards for any agent contributing to a repository. Its primary goal is to maintain a stable, reliable codebase by enforcing strict test coverage for all logic changes, regardless of the underlying language or framework.
 
-## 📋 The Protocol
+## The Protocol
 
 ### 1. Mandatory Pre-Flight
 
@@ -31,7 +31,7 @@ After completing the code implementation:
 - **Full Suite Pass:** Run the entire test suite again. The new test must pass, and no existing tests can fail. Any regressions must be resolved before the task is considered "complete".
 - **Artifact Cleanup:** Delete any temporary test artifacts, mock files, or dummy data generated during the testing process.
 
-## 🛠️ Tooling & Discovery
+## Tooling & Discovery
 
 The agent must automatically adapt to the repository's native tooling. Upon initializing a task, the agent should identify:
 
@@ -41,7 +41,7 @@ The agent must automatically adapt to the repository's native tooling. Upon init
   - **Source:** The directory containing core logic (e.g., `src/`, `lib/`, `app/`).
   - **Tests:** The directory containing specifications (e.g., `tests/`, `spec/`, `__tests__/`).
 
-## 🎯 Dynamic Test Targets
+## Dynamic Test Targets
 
 When applying this skill to a specific PR or task, the agent should dynamically identify and test the following layers of the application:
 
