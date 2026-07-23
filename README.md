@@ -7,7 +7,7 @@ Neovim Lua API reference skills, test-planning workflow skills, and Anki card-ge
 Add the marketplace, then install plugins:
 
 ```
-/marketplace add <your-github-username>/omp-neovim-skills
+/marketplace add gsmith-alvarez/omp-neovim-skills
 /marketplace install nvim@omp-neovim-skills
 /marketplace install anki.cloze@omp-neovim-skills
 /marketplace install nvim.system@omp-neovim-skills
@@ -16,7 +16,7 @@ Add the marketplace, then install plugins:
 CLI equivalent:
 
 ```
-omp plugin marketplace add <your-github-username>/omp-neovim-skills
+omp plugin marketplace add gsmith-alvarez/omp-neovim-skills
 omp plugin install nvim@omp-neovim-skills
 ```
 
