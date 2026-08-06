@@ -69,7 +69,20 @@ Listed on separate lines at the top of the file:
 
 With a `notetype column`/`deck column`, the first **regular** column maps to the
 first field, the second to the second field, and so on — letting one file mix
-note types.
+note types (e.g. `Basic` and `Cloze`).
+
+```tsv
+#separator:Tab
+#html:true
+#notetype column:1
+#deck column:2
+#tags:MyTag
+#columns:Type	Deck	Field1	Field2
+Basic	MyDeck::Topic	Question	Answer
+Cloze	MyDeck::Topic	{{c1::Text}}	Extra
+```
+
+> **Fallback Strategy:** When generating import files programmatically, also consider providing separate TSV files per note type (e.g. `Basic_Cards.tsv` with `#notetype:Basic` and `Cloze_Cards.tsv` with `#notetype:Cloze`). This avoids manual column mapping errors if the user's Anki version does not parse multi-note-type headers automatically.
 
 ### Duplicates & updating
 
@@ -110,3 +123,4 @@ media is not deleted.
 3. Cloze spanning lines → use HTML `<br>`, not quoted multi-line.
 4. Media references (`[sound:]`, `<img>`) go in fields and need **Allow HTML**.
 5. `.apkg` merges by modification time; `.colpkg` overwrites the whole collection.
+6. **Code String Escaping (LaTeX `\to` in TSV generators):** When writing TSV strings in programming languages like Python, unescaped TeX commands like `\to` evaluate to `\t` (a literal TAB character) + `o`. This injects unexpected column breaks mid-field, corrupting TSV formatting and causing Anki to fail or collapse all rows into a single row. Always use raw strings (`r"..."`) or double-escape backslashes (`\\to`).
