@@ -1,6 +1,6 @@
 # omp-neovim-skills
 
-Neovim Lua API reference skills, test-planning workflow skills, and Anki card-generation skills, packaged as an [oh-my-pi](https://github.com/) marketplace. Each skill installs independently and is discoverable via `skill://<name>`.
+Neovim Lua API reference skills, test-planning workflow skills, Anki card-generation skills, and a terminal-demo recording workflow, packaged as an [oh-my-pi](https://github.com/) marketplace. Each skill installs independently and is discoverable via `skill://<name>`.
 
 ## Install
 
@@ -49,6 +49,7 @@ Local testing before publishing:
 | `anki.import-export` | education | CSV/TSV import, file headers, duplicates/GUID, .apkg/.colpkg packaged decks |
 | `prime-planning` | productivity | test-first planning |
 | `regression-testing` | development | regression test protocol |
+| `terminal-demos` | development | VHS recordings of TUIs -> README screenshots + GIF |
 
 ## Layout
 

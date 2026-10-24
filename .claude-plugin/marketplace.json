@@ -4,7 +4,7 @@
     "name": "Your Name"
   },
   "metadata": {
-    "description": "Neovim Lua API reference skills, test-planning workflow skills, and Anki card-generation skills (notes, templates, cloze, math, media, import/export) for oh-my-pi.",
+    "description": "Neovim Lua API reference skills, test-planning workflow skills, Anki card-generation skills (notes, templates, cloze, math, media, import/export), and a terminal-demo recording workflow for oh-my-pi.",
     "version": "1.0.0",
     "pluginRoot": "plugins"
   },
@@ -248,6 +248,21 @@
         "csv",
         "apkg",
         "flashcards"
+      ]
+    },
+    {
+      "name": "terminal-demos",
+      "description": "Recording a real terminal/TUI as README screenshots and an animated GIF with VHS (ttyd + Chromium + ffmpeg) — tape authoring, key-timing and path pitfalls, OCR/ffprobe self-checks, pngquant/gifsicle compression, and a rerender script. Use when a TUI README has stale screenshots or needs a \"watch it work\" demo.",
+      "source": "./terminal-demos",
+      "version": "1.0.0",
+      "category": "development",
+      "tags": [
+        "tui",
+        "vhs",
+        "gif",
+        "screenshots",
+        "terminal",
+        "documentation"
       ]
     }
   ]
