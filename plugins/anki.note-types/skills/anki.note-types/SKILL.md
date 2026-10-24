@@ -1,5 +1,5 @@
 ---
-name: Anki Note Types
+name: anki.note-types
 description: Anki's data model — notes vs cards, fields, note types, and the built-in types (Basic, Basic (and reversed), Basic (optional reversed), Basic (type in the answer), Cloze, Image Occlusion). Covers card-generation rules, deck override, and tags. Use when designing note types or deciding how cards are generated from notes.
 ---
 

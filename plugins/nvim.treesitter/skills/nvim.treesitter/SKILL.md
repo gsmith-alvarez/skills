@@ -1,5 +1,5 @@
 ---
-name: Neovim Treesitter API
+name: nvim.treesitter
 description: Reference for Neovim treesitter Lua APIs (TSNode, TSTree, TSQuery, TSParser, query cursors). Use when writing tree-sitter queries, node traversal, or syntax-aware edits.
 ---
 # Neovim Treesitter API Reference

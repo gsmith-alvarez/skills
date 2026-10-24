@@ -1,5 +1,5 @@
 ---
-name: Neovim Snippet API
+name: nvim.snippet
 description: Reference for vim.snippet in Neovim Lua (expand/jump/active/stop). Use when implementing or driving LSP/extensible snippet expansion and tabstop navigation in plugins or configs.
 ---
 

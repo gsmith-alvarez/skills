@@ -1,5 +1,5 @@
 ---
-name: Neovim Diagnostics API
+name: nvim.diagnostics
 description: Reference for vim.diagnostic and diagnostic-namespace APIs in Neovim Lua (signs, virtual text/lines, goto next/prev, qf/loclist, enable/disable). Use when implementing diagnostics display or navigation.
 ---
 # Neovim Diagnostics API Reference

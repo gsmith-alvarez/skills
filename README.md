@@ -1,25 +1,27 @@
-# omp-neovim-skills
+# skills
 
-Neovim Lua API reference skills, test-planning workflow skills, Anki card-generation skills, a terminal-demo recording workflow, plus a NixOS homelab-server delta skill and a third-party skill-adoption audit procedure, packaged as an [oh-my-pi](https://github.com/) marketplace. Each skill installs independently and is discoverable via `skill://<name>`.
+A personal collection of agent skills, packaged as an [oh-my-pi](https://github.com/) marketplace with a Claude Code-compatible manifest. Every skill installs independently and is discoverable via `skill://<name>`.
+
+The collection spans Neovim/Lua API reference, Anki authoring, planning and testing workflows, terminal-demo recording, NixOS homelab operations, and third-party skill adoption. New domains are added as new plugins without changing the catalog identity.
 
 ## Install
 
-Add the marketplace, then install plugins:
+Add the marketplace, then install the skills you want:
 
 ```
 /marketplace add gsmith-alvarez/skills
-/marketplace install nvim@omp-neovim-skills
-/marketplace install anki.cloze@omp-neovim-skills
-/marketplace install nvim.system@omp-neovim-skills
-/marketplace install homelab-server-delta@omp-neovim-skills
+/marketplace install nvim@skills
+/marketplace install anki.cloze@skills
+/marketplace install regression-testing@skills
+/marketplace install homelab-server-delta@skills
 ```
 
 CLI equivalent:
 
 ```
 omp plugin marketplace add gsmith-alvarez/skills
-omp plugin install nvim@omp-neovim-skills
-omp plugin install homelab-server-delta@omp-neovim-skills
+omp plugin install nvim@skills
+omp plugin install agent-skill-adoption@skills
 ```
 
 Local testing before publishing:
@@ -28,43 +30,76 @@ Local testing before publishing:
 /marketplace add ./path/to/this/repo
 ```
 
-## Plugins
+## Skills
 
-| Plugin | Category | Description |
-|---|---|---|
-| `nvim` | development | vim.api / vim.fn / builtin surface |
-| `nvim.diagnostics` | development | vim.diagnostic + diagnostic namespaces |
-| `nvim.lsp` | development | vim.lsp / buf / util / codelens / semantic_tokens |
-| `nvim.treesitter` | development | treesitter Lua APIs |
-| `nvim.loop` | development | vim.loop / vim.uv (libuv) |
-| `nvim.keymap` | development | vim.keymap set/del |
-| `nvim.fs` | development | vim.fs path helpers |
-| `nvim.utility` | development | misc vim.* helpers |
-| `nvim.snippet` | development | vim.snippet expand/jump/active/stop |
-| `nvim.system` | development | vim.system process runner |
-| `luasnip` | development | LuaSnip engine: node constructors, snippet opts, events/callbacks, add_snippets, extras |
-| `anki.note-types` | education | notes vs cards, fields, note types, built-in types, card-generation rules |
-| `anki.card-templates` | education | template language: field replacement, conditionals, filters, special fields, HTML/CSS |
-| `anki.cloze` | education | cloze deletion syntax, generation, nested clozes, per-card conditionals, Image Occlusion |
-| `anki.math` | education | MathJax and LaTeX in cards, mhchem, cloze/LaTeX delimiter conflicts |
-| `anki.media` | education | sound/image/video tags, static template media, collection.media, formats, import |
-| `anki.import-export` | education | CSV/TSV import, file headers, duplicates/GUID, .apkg/.colpkg packaged decks |
-| `prime-planning` | productivity | test-first planning |
-| `regression-testing` | development | regression test protocol |
-| `terminal-demos` | development | VHS recordings of TUIs -> README screenshots + GIF |
-| `homelab-server-delta` | devops | NixOS homelab server: verified module map, Compose-to-NixOS corrections, snapshot gap |
-| `agent-skill-adoption` | ai-agents | surveying + auditing third-party agent skills and MCP servers before install |
+### Neovim & Lua
+
+| Skill | Description |
+|---|---|
+| `nvim` | vim.api / vim.fn / builtin surface |
+| `nvim.diagnostics` | vim.diagnostic + diagnostic namespaces |
+| `nvim.lsp` | vim.lsp / buf / util / codelens / semantic_tokens |
+| `nvim.treesitter` | treesitter Lua APIs |
+| `nvim.loop` | vim.loop / vim.uv (libuv) |
+| `nvim.keymap` | vim.keymap set/del |
+| `nvim.fs` | vim.fs path helpers |
+| `nvim.utility` | misc vim.* helpers |
+| `nvim.snippet` | vim.snippet expand/jump/active/stop |
+| `nvim.system` | vim.system process runner |
+| `luasnip` | LuaSnip engine: node constructors, snippet opts, events/callbacks, add_snippets, extras |
+
+### Anki
+
+| Skill | Description |
+|---|---|
+| `anki.note-types` | notes vs cards, fields, note types, built-in types, card-generation rules |
+| `anki.card-templates` | template language: field replacement, conditionals, filters, special fields, HTML/CSS |
+| `anki.cloze` | cloze deletion syntax, generation, nested clozes, per-card conditionals, Image Occlusion |
+| `anki.math` | MathJax and LaTeX in cards, mhchem, cloze/LaTeX delimiter conflicts |
+| `anki.media` | sound/image/video tags, static template media, collection.media, formats, import |
+| `anki.import-export` | CSV/TSV import, file headers, duplicates/GUID, .apkg/.colpkg packaged decks |
+
+### Planning & testing
+
+| Skill | Description |
+|---|---|
+| `prime-planning` | test-first planning |
+| `regression-testing` | regression test protocol |
+
+### Terminal & documentation
+
+| Skill | Description |
+|---|---|
+| `terminal-demos` | VHS recordings of TUIs → README screenshots + GIF |
+
+### Infrastructure & operations
+
+| Skill | Description |
+|---|---|
+| `homelab-server-delta` | NixOS homelab server: verified module map, Compose-to-NixOS corrections, snapshot gap |
+
+### Agent tooling
+
+| Skill | Description |
+|---|---|
+| `agent-skill-adoption` | surveying + auditing third-party agent skills and MCP servers before install |
 
 ## Layout
 
 ```
-.omp-plugin/marketplace.json     # omp catalog (preferred)
-.claude-plugin/marketplace.json  # Claude Code-compatible fallback
+.omp-plugin/marketplace.json     # omp catalog
+.claude-plugin/marketplace.json  # Claude Code-compatible mirror
 plugins/
   <name>/
     skills/<name>/SKILL.md       # one skill per plugin dir
 scripts/validate_marketplace.py  # catalog <-> disk consistency check
 ```
+
+## Add a skill
+
+1. Create `plugins/<name>/skills/<name>/SKILL.md` with YAML frontmatter (`name`, `description`). `name` must match the directory/plugin slug; it becomes the `skill://<name>` handle.
+2. Add the plugin to both catalogs with `name`, `description`, `source: "./<name>"`, `category`, and `tags`.
+3. Run `python scripts/validate_marketplace.py`.
 
 ## Validate
 
@@ -72,4 +107,4 @@ scripts/validate_marketplace.py  # catalog <-> disk consistency check
 python scripts/validate_marketplace.py
 ```
 
-Checks: catalog parses, every plugin has a matching `skills/<name>/SKILL.md`, no duplicate plugin names.
+Checks: catalog parses, every plugin has a matching `skills/<name>/SKILL.md`, its frontmatter `name` matches the plugin name, and no plugin names are duplicated.

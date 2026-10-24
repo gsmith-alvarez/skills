@@ -1,5 +1,5 @@
 ---
-name: Neovim LSP API
+name: nvim.lsp
 description: Reference for vim.lsp, vim.lsp.buf, vim.lsp.util, vim.lsp.codelens, vim.lsp.semantic_tokens, and the LSP protocol APIs in Neovim Lua. Use when wiring language-server features (hover, definitions, references, code actions, formatting, completion, inlay hints).
 ---
 # Neovim LSP API Reference

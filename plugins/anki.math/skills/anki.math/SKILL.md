@@ -1,5 +1,5 @@
 ---
-name: Anki Math & Symbols
+name: anki.math
 description: MathJax (\(...\), \[...\]) and LaTeX ([latex]...[/latex], [$]...[/$], [$$]...[/$$]) in Anki cards, mhchem chemistry, and the known conflicts between cloze/LaTeX delimiters and template field replacements. Use when adding equations or chemical notation to Anki cards.
 ---
 

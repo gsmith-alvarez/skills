@@ -1,5 +1,5 @@
 ---
-name: Anki Cloze Deletion
+name: anki.cloze
 description: Cloze deletion syntax and generation — {{c1::text}}, {{c1::text::hint}}, multiple clozes → multiple cards, numbering rules, nested clozes, the cloze note type (single card template using {{cloze:Text}}), per-card conditionals {{#c1}}, type:cloze, cloze+LaTeX delimiter conflicts, and Image Occlusion. Use when generating cloze cards.
 ---
 

@@ -8,6 +8,20 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATALOG = os.path.join(ROOT, ".omp-plugin", "marketplace.json")
 
 
+def frontmatter_name(path: str) -> str | None:
+    with open(path, "r", encoding="utf-8") as fh:
+        text = fh.read()
+    if not text.startswith("---"):
+        return None
+    end = text.find("\n---", 3)
+    if end == -1:
+        return None
+    for line in text[3:end].splitlines():
+        if line.startswith("name:"):
+            return line.split(":", 1)[1].strip().strip("'\"")
+    return None
+
+
 def main() -> int:
     with open(CATALOG, "r", encoding="utf-8") as fh:
         data = json.load(fh)
@@ -48,6 +62,10 @@ def main() -> int:
         skill = os.path.join(ROOT, rel, "skills", name, "SKILL.md")
         if not os.path.isfile(skill):
             print(f"FAIL: plugin '{name}' missing {skill}")
+            return 1
+        declared = frontmatter_name(skill)
+        if declared is not None and declared != name:
+            print(f"FAIL: plugin '{name}' has frontmatter name '{declared}'")
             return 1
         print(f"ok: {name}")
 

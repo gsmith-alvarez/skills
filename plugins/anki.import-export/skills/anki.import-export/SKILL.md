@@ -1,5 +1,5 @@
 ---
-name: Anki Import & Export
+name: anki.import-export
 description: Bulk-creating Anki notes/cards from text files (CSV/TSV) and packaged decks (.apkg/.colpkg) — field separators, quoting/escaping, HTML newlines, file headers (#separator, #html, #tags, #columns, #notetype, #deck, #notetype column, #deck column, #tags column, #guid column), duplicate/GUID handling, and export options. Use when generating cards in bulk or sharing decks.
 ---
 

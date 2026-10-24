@@ -1,5 +1,5 @@
 ---
-name: LuaSnip API
+name: luasnip
 description: Reference for the LuaSnip snippet-engine API (require('luasnip')) — node constructors (s/sn/t/i/f/c/d/r), snippet opts (trig/wordTrig/regTrig/snippetType/condition/callbacks), events, add_snippets, and extras (fmt/rep/lambda/match). Use when authoring, editing, or debugging LuaSnip snippets and autosnippets in this plugin.
 ---
 

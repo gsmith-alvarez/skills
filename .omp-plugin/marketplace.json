@@ -1,11 +1,11 @@
 {
-  "name": "omp-neovim-skills",
+  "name": "skills",
   "owner": {
-    "name": "Your Name"
+    "name": "Giovanni (gsmith-alvarez)"
   },
   "metadata": {
-    "description": "Neovim Lua API reference skills, test-planning workflow skills, Anki card-generation skills (notes, templates, cloze, math, media, import/export), a terminal-demo recording workflow, NixOS homelab-server delta notes, and a third-party skill-adoption audit procedure for oh-my-pi.",
-    "version": "1.0.0",
+    "description": "Giovanni's personal collection of agent skills — Neovim/Lua API references, Anki card generation, test-first planning and regression testing, terminal-demo recording, NixOS homelab operations, and third-party skill adoption.",
+    "version": "2.0.0",
     "pluginRoot": "plugins"
   },
   "plugins": [

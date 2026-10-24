@@ -1,5 +1,5 @@
 ---
-name: Neovim System (process) API
+name: nvim.system
 description: Reference for vim.system in Neovim Lua — the libuv-backed process runner (0.10+). Use when spawning external commands, capturing output, or controlling child processes as an alternative to jobstart for simple cases.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: Neovim Loop (libuv) API
+name: nvim.loop
 description: Reference for vim.loop / vim.uv (libuv) bindings in Neovim Lua — timers, spawned processes, filesystem, streams/pipes, OS queries, and handle lifecycle. Use when writing async I/O, timers, job runners, or file watchers.
 ---
 

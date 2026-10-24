@@ -1,5 +1,5 @@
 ---
-name: Neovim Keymap API
+name: nvim.keymap
 description: Reference for vim.keymap in Neovim Lua (set/del and mapping options). Use when creating, modifying, or removing key mappings, buffer-local maps, or callback mappings.
 ---
 

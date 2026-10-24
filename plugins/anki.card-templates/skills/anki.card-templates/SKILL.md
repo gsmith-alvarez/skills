@@ -1,5 +1,5 @@
 ---
-name: Anki Card Templates
+name: anki.card-templates
 description: Anki card template language — field replacement {{Field}}, conditionals {{#Field}}/{{^Field}}, special fields ({{Tags}}, {{FrontSide}}, {{Type}}, {{Deck}}, {{Subdeck}}, {{CardFlag}}, {{Card}}), filters (type:, cloze:, text:, hint:, tts:, furigana:/kana:/kanji:, cloze-only:), the {{FrontSide}} + <hr id=answer> divider, raw HTML/CSS, and card-generation rules. Use when writing or editing Anki card front/back templates or styling.
 ---
 

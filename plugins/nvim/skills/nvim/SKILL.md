@@ -1,5 +1,5 @@
 ---
-name: Neovim Lua API Reference
+name: nvim
 description: Reference for Neovim's Lua API surface (vim.api, vim.fn, and builtin helpers such as vim.schedule, vim.wait, vim.ui_*). Use when writing or editing Neovim Lua plugins/configs, or when an agent needs exact vim.api/vim.fn signatures.
 ---
 # Neovim Lua API Reference

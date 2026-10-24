@@ -1,5 +1,5 @@
 ---
-name: Neovim Filesystem API
+name: nvim.fs
 description: Reference for vim.fs in Neovim Lua — path joining, dirname/basename/ext, normalization, mkdir/rm, find, and directory/parent iterators. Use when manipulating file paths or walking directories.
 ---
 

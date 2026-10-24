@@ -1,5 +1,5 @@
 ---
-name: Anki Media
+name: anki.media
 description: Media on Anki cards — [sound:file.mp3], <img src="file.jpg">, static template media (leading-underscore naming), the collection.media folder, supported formats (MP3/MP4), importing media via text files, LaTeX-rendered images, and TTS. Use when adding audio, images, video, or generated media to cards.
 ---
 

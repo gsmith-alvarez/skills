@@ -1,5 +1,5 @@
 ---
-name: Prime Planning
+name: prime-planning
 description: Enforces test-first planning for new features — every planned feature must state how it will be verified, and tests are written before implementation. Use at the start of feature work.
 ---
 ## Planning

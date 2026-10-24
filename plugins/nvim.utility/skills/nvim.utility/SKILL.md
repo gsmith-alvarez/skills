@@ -1,5 +1,5 @@
 ---
-name: Neovim Utility (vim.*) API
+name: nvim.utility
 description: Reference for the miscellaneous vim.* helpers in Neovim Lua not covered by the other nvim skills — table helpers, json/mpack, inspect, iter, version, notify/log, string utils, validate/defer, options accessors, vim.system, vim.snippet, vim.highlight, and vim.ui. Use for general-purpose Lua helpers when writing plugins.
 ---
 

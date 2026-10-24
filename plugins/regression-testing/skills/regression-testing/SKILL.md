@@ -1,5 +1,5 @@
 ---
-name: Universal Regression Testing
+name: regression-testing
 description: Ensures that every codebase modification is backed by a corresponding regression test to prevent breakages and maintain invariant stability.
 ---
 
