@@ -1,23 +1,25 @@
 # omp-neovim-skills
 
-Neovim Lua API reference skills, test-planning workflow skills, Anki card-generation skills, and a terminal-demo recording workflow, packaged as an [oh-my-pi](https://github.com/) marketplace. Each skill installs independently and is discoverable via `skill://<name>`.
+Neovim Lua API reference skills, test-planning workflow skills, Anki card-generation skills, a terminal-demo recording workflow, plus a NixOS homelab-server delta skill and a third-party skill-adoption audit procedure, packaged as an [oh-my-pi](https://github.com/) marketplace. Each skill installs independently and is discoverable via `skill://<name>`.
 
 ## Install
 
 Add the marketplace, then install plugins:
 
 ```
-/marketplace add gsmith-alvarez/omp-neovim-skills
+/marketplace add gsmith-alvarez/skills
 /marketplace install nvim@omp-neovim-skills
 /marketplace install anki.cloze@omp-neovim-skills
 /marketplace install nvim.system@omp-neovim-skills
+/marketplace install homelab-server-delta@omp-neovim-skills
 ```
 
 CLI equivalent:
 
 ```
-omp plugin marketplace add gsmith-alvarez/omp-neovim-skills
+omp plugin marketplace add gsmith-alvarez/skills
 omp plugin install nvim@omp-neovim-skills
+omp plugin install homelab-server-delta@omp-neovim-skills
 ```
 
 Local testing before publishing:
@@ -50,6 +52,8 @@ Local testing before publishing:
 | `prime-planning` | productivity | test-first planning |
 | `regression-testing` | development | regression test protocol |
 | `terminal-demos` | development | VHS recordings of TUIs -> README screenshots + GIF |
+| `homelab-server-delta` | devops | NixOS homelab server: verified module map, Compose-to-NixOS corrections, snapshot gap |
+| `agent-skill-adoption` | ai-agents | surveying + auditing third-party agent skills and MCP servers before install |
 
 ## Layout
 

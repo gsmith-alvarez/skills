@@ -4,7 +4,7 @@
     "name": "Your Name"
   },
   "metadata": {
-    "description": "Neovim Lua API reference skills, test-planning workflow skills, Anki card-generation skills (notes, templates, cloze, math, media, import/export), and a terminal-demo recording workflow for oh-my-pi.",
+    "description": "Neovim Lua API reference skills, test-planning workflow skills, Anki card-generation skills (notes, templates, cloze, math, media, import/export), a terminal-demo recording workflow, NixOS homelab-server delta notes, and a third-party skill-adoption audit procedure for oh-my-pi.",
     "version": "1.0.0",
     "pluginRoot": "plugins"
   },
@@ -263,6 +263,35 @@
         "screenshots",
         "terminal",
         "documentation"
+      ]
+    },
+    {
+      "name": "homelab-server-delta",
+      "description": "Use when implementing the homelab server plan — a NixOS module map verified against the pinned nixpkgs, the Compose-to-NixOS rewrites (Gluetun network namespaces, Caddy .ts.net certificates), the snapshot-before-migration gap, and the greps that re-derive all of it. Deliberately excludes what the plan already states.",
+      "source": "./homelab-server-delta",
+      "version": "0.1.0",
+      "category": "devops",
+      "tags": [
+        "nixos",
+        "homelab",
+        "zfs",
+        "caddy",
+        "systemd",
+        "modules"
+      ]
+    },
+    {
+      "name": "agent-skill-adoption",
+      "description": "Use when surveying, auditing, or adopting third-party agent skills and MCP servers — discovery across the Hermes catalog and GitHub, reading bare-slug registry entries without installing, judging execution-model and trust-model conflicts, and the reasons to refuse a popular skill.",
+      "source": "./agent-skill-adoption",
+      "version": "0.1.1",
+      "category": "ai-agents",
+      "tags": [
+        "skills",
+        "adoption",
+        "audit",
+        "catalog",
+        "security"
       ]
     }
   ]
