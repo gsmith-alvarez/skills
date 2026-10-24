@@ -2,7 +2,7 @@
 name: homelab-server-delta
 description: Use when implementing the homelab server plan — verified module map, Compose-to-NixOS corrections, open gaps.
 category: devops
-version: 0.1.0
+version: 0.1.1
 author: Giovanni (gsmith-alvarez)
 license: MIT
 metadata:
@@ -17,7 +17,7 @@ The design document (supplied separately) is the source of **intent**: stack lis
 
 **Rule of use:** the plan wins on intent, this file wins on mechanism. When they disagree, say so and cite both — do not silently pick one.
 
-Status: draft v0.1, checked against the nixpkgs rev pinned in `~/dotfiles` (see §1). Anything marked **SPIKE** is unverified by construction; do not present it as settled.
+Status: v0.1.1, checked against the nixpkgs rev pinned in `~/dotfiles` (see §1) and then independently audited against the same tree — that second pass corrected six factual errors (OMP *is* packaged as `pkgs.omp`, `withPlugins` hash semantics, `oci-containers` rootless support, Nextcloud's locking option, the servarr satellite paths, and `overseerr` being removed rather than renamed). Anything marked **SPIKE** is unverified by construction; do not present it as settled.
 
 ## 1. Re-derive before trusting any table here
 
@@ -39,16 +39,16 @@ A `services.<x>` hit in only one file can also be a rename shim: check `modules/
 
 | Plan component | NixOS option | Module path under `nixos/modules/` | Delta |
 |---|---|---|---|
-| Seerr | `services.seerr` | `services/misc/seerr.nix` | `services.overseerr` is a rename shim in `rename.nix` (Overseerr + Jellyseerr merged into Seerr). Write `seerr` |
-| Radarr / Sonarr / Prowlarr | `services.radarr`, `services.sonarr`, `services.prowlarr` | `services/misc/servarr/` | Same tree ships `bazarr`, `tdarr`, `recyclarr`, `nzbget`, `nzbhydra2`. Quality profiles are app JSON, not Nix |
-| qBittorrent | `services.qbittorrent` | `services/torrent/qbittorrent.nix` | Options are `profileDir`, `webuiPort`, `torrentingPort`, `serverConfig`, `extraArgs`. **No network-namespace option** — see §3.1 |
+| Seerr | `services.seerr` | `services/misc/seerr.nix` | `services.overseerr` is a `mkRemovedOptionModule` error stub in `rename.nix`, **not** a rename — there is no value migration, an old config has to be rewritten by hand. (Overseerr + Jellyseerr merged into Seerr) |
+| Radarr / Sonarr / Prowlarr | `services.radarr`, `services.sonarr`, `services.prowlarr` | `services/misc/servarr/` | That directory also holds `lidarr`, `readarr`, `whisparr` and the shared `settings-options.nix`. `bazarr`, `tdarr/`, `recyclarr`, `nzbget`, `nzbhydra2` sit beside it in `services/misc/`, **not** inside `servarr/`. Quality profiles are app JSON, not Nix |
+| qBittorrent | `services.qbittorrent` | `services/torrent/qbittorrent.nix` | Notable options `profileDir`, `webuiPort`, `torrentingPort`, `serverConfig`, `extraArgs`, plus `enable`, `package`, `user`, `group`, `openFirewall`. **No network-namespace option** — see §3.1 |
 | Gluetun | — | — | No module anywhere in nixpkgs. Container only |
 | Plex | `services.plex` | `services/misc/plex.nix` | |
 | Audiobookshelf | `services.audiobookshelf` | `services/web-apps/audiobookshelf.nix` | `dataDir`, `host` (defaults `127.0.0.1`) |
 | Calibre-Web | `services.calibre-web` | `services/web-apps/calibre-web.nix` | Distinct from `services.calibre-server`; do not confuse them |
 | Vaultwarden | `services.vaultwarden` | `services/security/vaultwarden/default.nix` | |
-| Nextcloud | `services.nextcloud` + `services.redis.servers.<name>` | `services/web-apps/nextcloud.nix` | File locking is a redis-server option, not a Nextcloud one |
-| Syncthing | `services.syncthing` | `services/networking/syncthing.nix` | Per-user settings attrset |
+| Nextcloud | `services.nextcloud` (+ `services.redis.servers.<name>`) | `services/web-apps/nextcloud.nix` | Locking **is** a Nextcloud option: `services.nextcloud.caching.redis` (or `configureRedis`) writes `memcache.locking`. `services.redis.servers.<name>` only declares the server |
+| Syncthing | `services.syncthing` | `services/networking/syncthing.nix` | One `settings` submodule for the service user — there is no `services.syncthing.users.*` attrset |
 | Immich | `services.immich` | `services/web-apps/immich.nix` | Has `mediaLocation`, `secretsFile`, `settings`, `database.createDB`, `redis.enable`, `accelerationDevices` — see §3.2 |
 | SearXNG | `services.searx` | `services/networking/searx.nix` | |
 | Caddy | `services.caddy` | `services/web-servers/caddy/default.nix` | `package`, `configFile`, `globalConfig`, `virtualHosts`, `dataDir`, `environmentFile` — see §4 |
@@ -58,9 +58,11 @@ A `services.<x>` hit in only one file can also be a rename shim: check `modules/
 | act_runner | `services.forgejo-runner` | `services/continuous-integration/forgejo-runner.nix` | `instances.<name>` attrset; `gitea-actions-runner.nix` is the legacy path |
 | GitHub runners | `services.github-runners` (plural) | `services/continuous-integration/github-runners.nix` | The singular `services.github-runner` is a `mkRemovedOptionModule` that tells you to use the plural — the plan already has this right |
 | ZFS | `boot.zfs.extraPools`, `boot.zfs.devNodes`; `services.zfs.{autoSnapshot,autoScrub,trim,expandOnBoot,zed}` | `tasks/filesystems/zfs.nix` | See §5 |
-| Containers | `virtualisation.oci-containers` | `virtualisation/oci-containers.nix` | System service, not rootless |
-| Zellij | — (user package) | — | Sessions are per-UID; two Unix accounts cannot attach to one |
-| Hermes / OMP | — | — | Not in nixpkgs; come from the `llm-agents` flake input |
+| Containers | `virtualisation.oci-containers` | `virtualisation/oci-containers.nix` | Root by default, but rootless **is** supported on the podman backend (`backend = "podman"` plus per-container `podman.user`) |
+| Tailscale | `services.tailscale` | `services/networking/tailscale.nix` | Prerequisite for §4. Its `tailscaled-autoconnect.service` is the ordering hook for anything binding a tailnet IP |
+| smartd | `services.smartd` | `services/monitoring/smartd.nix` | The plan's SMART schedule lives here; the `smartctl` **exporter** is a separate option |
+| Zellij | — (user package) | — | Sessions are per-UID; two Unix accounts cannot attach to one (runtime behaviour, not a nixpkgs fact) |
+| Hermes / OMP | `pkgs.omp` is in this pin | `pkgs/by-name/om/omp/` | OMP **is** packaged (`pname = "omp"`, homepage omp.sh), so the `llm-agents` input is a pinning choice, not a necessity. Hermes is not in nixpkgs and only comes from `llm-agents` |
 | nexcanvas | — (container) | — | No module |
 
 ## 3. Compose language that does not survive NixOS
@@ -70,7 +72,7 @@ A `services.<x>` hit in only one file can also be a rename shim: check `modules/
 `--network=container:gluetun` is a Docker flag. `services.qbittorrent` has no namespace option, so a *native* qBittorrent unit cannot be pointed at a container's netns declaratively. Two shapes, both **SPIKE**:
 
 - **(a) both as containers.** qBittorrent and Gluetun as `virtualisation.oci-containers`, preserving Compose semantics. Cost: loses the native module's user/group/profileDir handling, and `oci-containers` is not rootless.
-- **(b) native service, shared netns via systemd.** Something creates `/run/netns/<name>` (gluetun, or `ip netns add`), then `qbittorrent.service` gets `JoinsNamespaceOf=`, `PrivateNetwork=true`, `NetworkNamespacePath=/run/netns/<name>`.
+- **(b) native service, shared netns via systemd.** Something creates `/run/netns/<name>` (gluetun, or `ip netns add`), then `qbittorrent.service` gets `JoinsNamespaceOf=` (a `[Unit]` directive, so `systemd.services.qbittorrent.unitConfig`) and `PrivateNetwork=true` + `NetworkNamespacePath=` (`serviceConfig`). **The module hardcodes `PrivateNetwork = false` and `RestrictNamespaces = true` as plain assignments, so this shape needs `lib.mkForce` on both** — otherwise you get a conflicting-definition error. Whether the module's remaining hardening (`PrivateUsers`, empty `CapabilityBoundingSet`, `SystemCallFilter`) still permits a joined netns is the unresolved part.
 
 Failure modes to test in either shape, in this order: qBittorrent starting before the netns exists (ordering); qBittorrent surviving a Gluetun restart with a dead tunnel; and whether the "firewall drops non-tunnel egress" claim actually holds — verify from inside the namespace, not from the host.
 
@@ -90,15 +92,15 @@ Plain Caddy cannot issue Tailscale certificates. Two mechanisms, and the plan's 
     hash = "";   # fakeHash default: the first build reports the required hash
   };
   ```
-  Plugins must carry a real tag, commit sha or pseudo-version (`@` is mandatory), and `withPlugins` computes the hash over the sorted plugin list — so adding or reordering plugins invalidates it.
+  Plugins must carry a real tag, commit sha or pseudo-version (`@` is mandatory). `hash` is the sha256 `outputHash` of the plugin-fetch FOD; the sorted plugin list only seeds the derivation *name* (an md5), so reordering is normalised away and changes nothing, while adding, removing or version-bumping a plugin does invalidate `hash`.
 
-**SPIKE:** whichever mechanism, confirm Caddy's service user can reach the tailscaled socket (the module does not necessarily run Caddy as root, and `/var/run/tailscale/tailscaled.sock` access is a group question). Test as the unit's user, not as your login shell.
+**SPIKE:** whichever mechanism, confirm Caddy's service user can reach the tailscaled socket. Caddy runs as `User = cfg.user` (default `caddy`), not root, with `NoNewPrivileges` and `PrivateDevices`, and the module exposes **no** `SupplementaryGroups` option; `services.tailscale` never mentions a socket path or group at all. So nixpkgs offers no supported path here — you add `systemd.services.caddy.serviceConfig.SupplementaryGroups` yourself and confirm the socket's group at runtime. Test as the unit's user, not as your login shell.
 
 ## 5. Snapshot-before-migration — nothing implements it
 
 Facts, verified, so this is not re-litigated:
 
-- `services.zfs.autoSnapshot` is the OpenSolaris `zfs-auto-snapshot`: opt-in **per dataset** via `com.sun:auto-snapshot=true`, interval-based (frequent/hourly/daily/weekly), pruned by keep-count. Time-anchored, never change-anchored.
+- `services.zfs.autoSnapshot` is the OpenSolaris `zfs-auto-snapshot`: opt-in **per dataset** via `com.sun:auto-snapshot=true`, interval-based (frequent/hourly/daily/weekly/monthly), pruned by keep-count. Time-anchored, never change-anchored.
 - `services.zfs.zed` exposes `enableMail` and `settings` (rendered as `zed.rc`). There is no hook-path option — custom sinks go through `zed.rc` variables or your own `zed.d` script. zed fires on pool events, not on planned upgrades.
 - `nh` knows generations; the `nix-agent` MCP has no snapshot verb at all (`build/diff/switch/generations/eval_config/locate_option/check`).
 - A generation rollback restores the closure. It does not revert a database migration the new closure already ran.

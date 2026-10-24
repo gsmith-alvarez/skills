@@ -269,7 +269,7 @@
       "name": "homelab-server-delta",
       "description": "Use when implementing the homelab server plan — a NixOS module map verified against the pinned nixpkgs, the Compose-to-NixOS rewrites (Gluetun network namespaces, Caddy .ts.net certificates), the snapshot-before-migration gap, and the greps that re-derive all of it. Deliberately excludes what the plan already states.",
       "source": "./homelab-server-delta",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "category": "devops",
       "tags": [
         "nixos",
