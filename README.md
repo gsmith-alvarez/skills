@@ -89,9 +89,15 @@ Local testing before publishing:
 ```
 .omp-plugin/marketplace.json     # omp catalog
 .claude-plugin/marketplace.json  # Claude Code-compatible mirror
+mcp.json                         # central MCP server manifest (see below)
 plugins/
   <name>/
     skills/<name>/SKILL.md       # one skill per plugin dir
+skills/                          # flat shims -> plugins/<name>/skills/<name>
+                                 # (one-level discovery roots scan only
+                                 # <dir>/<name>/SKILL.md, so this flat view
+                                 # lets omp/pi custom directories and pi's
+                                 # user-skills path find every skill)
 scripts/validate_marketplace.py  # catalog <-> disk consistency check
 ```
 

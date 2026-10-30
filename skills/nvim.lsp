@@ -1,0 +1,1 @@
+../plugins/nvim.lsp/skills/nvim.lsp

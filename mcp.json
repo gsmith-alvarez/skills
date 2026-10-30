@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "exposure": "deferred",
+      "description": "Version-pinned library documentation and code examples"
+    },
+    "jina": {
+      "url": "https://mcp.jina.ai/v1",
+      "exposure": "deferred",
+      "description": "Clean Markdown extraction from web pages and PDFs"
+    },
+    "playwright": {
+      "command": "/data/OpenBot/Shared/mcp/playwright/playwright-mcp",
+      "exposure": "deferred",
+      "description": "Headless browser automation and DOM accessibility tree"
+    },
+    "sqlite-ro": {
+      "command": "/data/OpenBot/Shared/mcp/sqlite/run-sqlite-ro",
+      "exposure": "deferred",
+      "description": "Read-only SQLite inspection and queries"
+    },
+    "nixos": {
+      "url": "http://192.168.68.52:8090/mcp"
+    }
+  },
+  "disabledServers": [
+    "sqlite-ro",
+    "playwright"
+  ]
+}

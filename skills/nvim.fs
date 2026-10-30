@@ -1,0 +1,1 @@
+../plugins/nvim.fs/skills/nvim.fs
