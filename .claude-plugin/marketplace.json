@@ -132,7 +132,7 @@
     },
     {
       "name": "prime-planning",
-      "description": "Enforces test-first planning for new features — every planned feature must state how it will be verified, and tests are written before implementation. Use at the start of feature work.",
+      "description": "Plan feature work with an appropriate verification strategy; use when a feature plan is requested.",
       "source": "./prime-planning",
       "version": "1.0.0",
       "category": "productivity",
@@ -144,7 +144,7 @@
     },
     {
       "name": "regression-testing",
-      "description": "Ensures that every codebase modification is backed by a corresponding regression test to prevent breakages and maintain invariant stability.",
+      "description": "Choose and run regression checks for a change or investigate a regression.",
       "source": "./regression-testing",
       "version": "1.0.0",
       "category": "development",

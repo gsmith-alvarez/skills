@@ -1,9 +1,8 @@
 ---
 name: prime-planning
-description: Enforces test-first planning for new features — every planned feature must state how it will be verified, and tests are written before implementation. Use at the start of feature work.
+description: Plan feature work with an appropriate verification strategy; use when a feature plan is requested.
 ---
-## Planning
-* whenever you plan a new feature you must include how you will test it
-* test creation should happen before the feature is created, prove that it fails, and then creation of the feature should make the test pass
-* tests should cover UI behavior via Playwright end-to-end where applicable; core logic and integration layers are tested with unit/integration tests (see the regression-testing skill). Not every test must be e2e — match the test layer to the change.
-* for the test-execution protocol (framework discovery, baseline, full-suite pass), see the regression-testing skill.
+
+# Feature planning
+
+Identify the intended behavior, important edge cases, and a verification approach suited to the change and the repository's tooling. Choose unit, integration, UI, or manual checks where they provide useful confidence. Include test-first work when requested or when it helps clarify behavior; do not require a new test for every change. Follow the user's scope and existing project conventions.

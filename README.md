@@ -1,6 +1,6 @@
 # skills
 
-A personal collection of agent skills, packaged as an [oh-my-pi](https://github.com/) marketplace with a Claude Code-compatible manifest. Every skill installs independently and is discoverable via `skill://<name>`.
+A personal collection of agent skills, packaged as an oh-my-pi marketplace with a Claude Code-compatible manifest. Every skill installs independently and is discoverable via `skill://<name>`.
 
 The collection spans Neovim/Lua API reference, Anki authoring, planning and testing workflows, terminal-demo recording, NixOS homelab operations, and third-party skill adoption. New domains are added as new plugins without changing the catalog identity.
 
@@ -63,8 +63,8 @@ Local testing before publishing:
 
 | Skill | Description |
 |---|---|
-| `prime-planning` | test-first planning |
-| `regression-testing` | regression test protocol |
+| `prime-planning` | feature planning and verification |
+| `regression-testing` | focused regression verification |
 
 ### Terminal & documentation
 
@@ -83,6 +83,16 @@ Local testing before publishing:
 | Skill | Description |
 |---|---|
 | `agent-skill-adoption` | surveying + auditing third-party agent skills and MCP servers before install |
+
+## MCP servers
+
+`mcp.json` contains personal server configuration. Entries use `exposure: "deferred"` to request on-demand tool exposure in clients that support it; this setting does not guarantee that a client delays starting the server or loading its tools. Check your client's MCP documentation and use its own lazy-loading or tool-search settings where available. Clients that ignore or reject these extra fields may need a client-specific configuration.
+
+The Playwright and SQLite commands are machine-specific and those servers are listed as disabled; adjust their paths and enable them only where installed. The NixOS endpoint is a private network address. The `disabledServers` field is also client-specific. Do not assume these settings apply to every MCP client.
+
+## Reference freshness
+
+Neovim reference snapshots are loaded on demand and are not pinned to a release. Other API and Anki reference skills can also age; check the target version's official documentation before relying on exact signatures or behavior. Homelab details describe a particular environment and should be verified against its current configuration.
 
 ## Layout
 
