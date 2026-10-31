@@ -41,6 +41,10 @@ Canberra was founded in {{c1::1913}}.
 - Deletions need **not** fall on word boundaries (`anberra` gives a partial hint:
   `C[…] was founded in 1913`).
 
+## Shared text across cloze numbers
+
+Recent Anki supports `{{c1,2,3::shared text}}` to hide the same text on multiple numbered cards. Check the target version before using this syntax; nested clozes offer an older alternative. See the [Anki manual](https://docs.ankiweb.net/editing.html#cloze-deletion).
+
 ## Nested clozes (Anki 2.1.56+)
 
 ```

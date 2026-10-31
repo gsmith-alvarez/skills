@@ -92,7 +92,7 @@ The Playwright and SQLite commands are machine-specific and those servers are li
 
 ## Reference freshness
 
-Neovim reference snapshots are loaded on demand and are not pinned to a release. Other API and Anki reference skills can also age; check the target version's official documentation before relying on exact signatures or behavior. Homelab details describe a particular environment and should be verified against its current configuration.
+Neovim API skills point to official documentation and the target installation’s version-matched help. Other API and Anki reference skills can also age; check the target version's official documentation before relying on exact signatures or behavior. Homelab details describe a particular environment and should be verified against its current configuration.
 
 ## Layout
 
